@@ -4263,39 +4263,42 @@ a.owfs__btn-ghost span { color: white; }
     .header-cta-btn { padding: 10px 18px; font-size: 0.82rem; }
 
     /* ── HERO ── */
+    /* FIX: Keep hero two-column on tablet — heading left, image right */
     .hero {
         --px: 32px;
         --header-offset: 106px;
     }
 
     .hero__wrap {
-        grid-template-columns: 1fr;
-        gap: 50px;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
         padding: 50px var(--px) 30px;
-        text-align: center;
+        text-align: left;
     }
 
-    .hero__left { align-items: center; }
-    .hero__eyebrow { justify-content: center; }
-    .hero__eyebrow-line { display: none; }
-    .hero__h1-row { justify-content: center; }
+    .hero__left { align-items: flex-start; }
+    .hero__eyebrow { justify-content: flex-start; }
+    .hero__eyebrow-line { display: block; }
+    .hero__h1-row { justify-content: flex-start; }
     .hero__h1-tag {
-        border-left: none; padding-left: 0;
-        border-bottom: 1px solid var(--bdg); padding-bottom: 6px;
+        border-left: 1px solid var(--bdg); padding-left: 12px;
+        border-bottom: none; padding-bottom: 0;
     }
-    .hero__desc { text-align: center; max-width: 580px; }
-    .hero__ctas { justify-content: center; }
-    .hero__trust { align-self: center; }
+    .hero__desc { text-align: left; max-width: 100%; }
+    .hero__ctas { justify-content: flex-start; }
+    .hero__trust { align-self: flex-start; }
     .hero__right {
-        min-height: 460px; max-width: 500px;
-        margin: 0 auto; width: 100%;
+        min-height: 420px;
+        max-width: 100%;
+        margin: 0;
+        width: 100%;
     }
     .hero__float--stats { right: -12px; }
     .hero__float--review { left: -12px; }
     .hero__scroll { display: none; }
     .hero__statsbar-inner { justify-content: center; gap: 32px; }
 
-    /* ── WCWF — KEY TABLET FIX ── */
+    /* ── WCWF — Keep two-column on tablet (compact, no stacking) ── */
     .wcwf {
         --px: 32px;
         padding: 80px 0 60px;
@@ -4303,20 +4306,22 @@ a.owfs__btn-ghost span { color: white; }
 
     .wcwf__header { margin-bottom: 48px; }
 
+    /* FIX: Two-column side-by-side — title/text left, image right */
     .wcwf__body {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
+        align-items: center;
     }
 
     .wcwf__visual {
         position: static;
-        max-width: 600px;
-        margin: 0 auto;
+        max-width: 100%;
+        margin: 0;
         width: 100%;
     }
 
     .wcwf__img {
-        aspect-ratio: 16/9;
+        aspect-ratio: 4/3;
     }
 
     .wcwf__img-badge {
@@ -4328,8 +4333,8 @@ a.owfs__btn-ghost span { color: white; }
 
     .wcwf__benefits {
         padding-top: 0;
-        max-width: 600px;
-        margin: 0 auto;
+        max-width: 100%;
+        margin: 0;
         width: 100%;
     }
 
@@ -4359,7 +4364,7 @@ a.owfs__btn-ghost span { color: white; }
 
     .wcwf__bottom-line { margin-top: 60px; }
 
-    /* ── BNF ── */
+    /* ── BNF — FIX: 2 cards per row on tablet (not 3, not 1) ── */
     .bnf {
         --px: 32px;
         padding-top: 80px;
@@ -4375,19 +4380,19 @@ a.owfs__btn-ghost span { color: white; }
     }
 
     .bnf__card--wide .bnf__card-inner {
-        flex-direction: column; gap: 20px;
+        flex-direction: row; gap: 20px;
     }
 
     .bnf__card--alt .bnf__card-inner { flex-direction: column; }
 
     .bnf__cta-strip {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: 24px; padding: 28px 32px;
     }
 
-    .bnf__cta-strip-right { width: 100%; }
-    .bnf__cta-btn, .bnf__ghost-btn { flex: 1; justify-content: center; }
+    .bnf__cta-strip-right { width: auto; }
+    .bnf__cta-btn, .bnf__ghost-btn { flex: 0 0 auto; justify-content: center; }
 
     /* ── OWFS ── */
     .owfs {
@@ -4401,13 +4406,13 @@ a.owfs__btn-ghost span { color: white; }
     }
 
     .owfs__footer {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: 22px; padding: 28px 32px;
     }
 
-    .owfs__footer-btns { width: 100%; }
-    .owfs__btn-primary, .owfs__btn-ghost { flex: 1; justify-content: center; }
+    .owfs__footer-btns { width: auto; }
+    .owfs__btn-primary, .owfs__btn-ghost { flex: 0 0 auto; justify-content: center; }
 
     /* ── CST ── */
     .cst {
@@ -4428,20 +4433,26 @@ a.owfs__btn-ghost span { color: white; }
     .cst__slide-title { font-size: clamp(1.4rem, 3vw, 1.9rem); }
     .cst__slide-img-placeholder { min-height: 320px; }
 
-    /* ── TRUST ── */
+    /* ── TRUST — FIX: heading left, image right, side by side ── */
     .trust { padding-top: 80px; }
 
     .trust__wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 44px;
+        align-items: center;
     }
+
+    .trust__content { text-align: left; }
+    .trust__eyebrow { justify-content: flex-start; }
+    .trust__desc { margin-left: 0; margin-right: 0; }
 
     .trust__visual {
-        max-width: 520px;
-        margin: 0 auto; width: 100%;
+        max-width: 100%;
+        margin: 0;
+        width: 100%;
     }
 
-    .trust__img { aspect-ratio: 16/9; }
+    .trust__img { aspect-ratio: 4/3; }
     .trust__pillars { grid-template-columns: 1fr 1fr; }
 
     /* ── REVIEWS ── */
@@ -4481,14 +4492,20 @@ a.owfs__btn-ghost span { color: white; }
     .cform { padding: 80px 0 60px; }
 
     .cform__wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 44px;
     }
 
-    /* ── FOOTER ── */
+    /* ── FOOTER — FIX: compact 4-column layout on tablet ── */
     .foot__top {
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 24px 20px;
+        align-items: start;
+    }
+
+    .foot__brand {
+        grid-column: 1 / -1;
+        text-align: left;
     }
 
     /* ── SHARED DIVIDERS ── */
@@ -4507,6 +4524,13 @@ a.owfs__btn-ghost span { color: white; }
 ============================================================ */
 @media (max-width: 900px) {
 
+    /* WCWF — still two-column but tighter */
+    .wcwf__body {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: center;
+    }
+
     .wcwf__visual { max-width: 100%; }
     .wcwf__img { aspect-ratio: 4/3; }
 
@@ -4518,6 +4542,9 @@ a.owfs__btn-ghost span { color: white; }
 
     .bnf__card-inner { padding: 26px 24px 22px; }
     .bnf__card--wide .bnf__card-inner { padding: 26px 24px 22px; }
+
+    /* BNF — 2 per row */
+    .bnf__grid { grid-template-columns: repeat(2, 1fr); }
 
     .owfs__grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -4531,9 +4558,24 @@ a.owfs__btn-ghost span { color: white; }
         align-items: center; flex-wrap: wrap; gap: 12px;
     }
 
+    /* TRUST — keep two-column side by side */
+    .trust__wrap {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: center;
+    }
+
     .trust__pillars { grid-template-columns: 1fr 1fr; }
+
     .area__grid { grid-template-columns: repeat(3, 1fr); }
-    .foot__top { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+    /* FOOTER — 2 brand full-width + 3 cols for links */
+    .foot__top {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px 20px;
+    }
+
+    .foot__brand { grid-column: 1 / -1; }
 }
 
 /* ============================================================
@@ -4567,50 +4609,44 @@ a.owfs__btn-ghost span { color: white; }
     .mob-social { padding: 14px 16px; }
     .mob-sidebar-footer { padding: 12px 16px 20px; }
 
-    /* HERO */
+    /* HERO — stack on mobile */
     .hero {
         --px: 20px;
         --header-offset: 96px;
     }
 
-    .hero__wrap { padding: 40px var(--px) 24px; gap: 36px; }
+    .hero__wrap {
+        grid-template-columns: 1fr;
+        padding: 40px var(--px) 24px;
+        gap: 36px;
+        text-align: center;
+    }
+
+    .hero__left { align-items: center; }
+    .hero__eyebrow { justify-content: center; }
+    .hero__eyebrow-line { display: none; }
+    .hero__h1-row { justify-content: center; }
+    .hero__h1-tag {
+        border-left: none; padding-left: 0;
+        border-bottom: 1px solid var(--bdg); padding-bottom: 6px;
+    }
     .hero__h1-word { font-size: clamp(2.4rem, 10vw, 3.2rem); }
     .hero__h1-word--italic { font-size: clamp(2rem, 8.5vw, 2.8rem); }
     .hero__h1-tag { font-size: .88rem; }
-    .hero__desc { font-size: .92rem; max-width: 480px; }
-
-    .hero__ctas {
-        flex-direction: column;
-        align-items: stretch;
-        max-width: 340px; width: 100%;
-    }
-
+    .hero__desc { font-size: .92rem; max-width: 480px; text-align: center; }
+    .hero__ctas { justify-content: center; flex-direction: column; align-items: stretch; max-width: 340px; width: 100%; }
     .hero__cta { justify-content: center; padding: 15px 22px; }
-
-    .hero__trust {
-        flex-wrap: wrap; justify-content: center;
-        padding: 14px 16px; gap: 12px;
-    }
-
+    .hero__trust { align-self: center; flex-wrap: wrap; justify-content: center; padding: 14px 16px; gap: 12px; }
     .hero__trust-sep { display: none; }
     .hero__trust-item { padding: 0 8px; }
     .hero__right { min-height: 360px; }
     .hero__frame { max-width: 340px; }
-
-    .hero__float--stats {
-        top: -14px; right: 0;
-        min-width: 170px; padding: 14px 16px;
-    }
-
+    .hero__float--stats { top: -14px; right: 0; min-width: 170px; padding: 14px 16px; }
     .hero__float-metric strong { font-size: 1.4rem; }
-
-    .hero__float--review {
-        bottom: -12px; left: 0;
-        max-width: 200px; padding: 12px 14px; gap: 8px;
-    }
-
+    .hero__float--review { bottom: -12px; left: 0; max-width: 200px; padding: 12px 14px; gap: 8px; }
     .hero__float-quote { font-size: .68rem; }
     .hero__deco-ring { display: none; }
+    .hero__scroll { display: none; }
 
     /* HERO STATS BAR: 2x2 grid */
     .hero__statsbar-inner {
@@ -4645,7 +4681,7 @@ a.owfs__btn-ghost span { color: white; }
     .hero__stat-divider { display: none; }
     .hero__stat--stars { align-items: center; }
 
-    /* WCWF */
+    /* WCWF — stack on mobile */
     .wcwf {
         --px: 20px;
         padding: 64px 0 48px;
@@ -4806,6 +4842,7 @@ a.owfs__btn-ghost span { color: white; }
         padding: 22px 20px;
         border-radius: var(--lxf-r2);
         text-align: center;
+        flex-direction: column;
     }
 
     .bnf__cta-strip-left { text-align: center; width: 100%; }
@@ -4847,9 +4884,9 @@ a.owfs__btn-ghost span { color: white; }
     .owfs__card-text { font-size: .82rem; }
     .owfs__card:hover { transform: translateY(-4px); }
 
-    .owfs__footer { padding: 22px 20px; text-align: center; }
+    .owfs__footer { padding: 22px 20px; text-align: center; flex-direction: column; align-items: flex-start; gap: 22px; }
     .owfs__footer-text { text-align: center; }
-    .owfs__footer-btns { flex-direction: column; }
+    .owfs__footer-btns { flex-direction: column; width: 100%; }
     .owfs__btn-primary, .owfs__btn-ghost { width: 100%; justify-content: center; }
     .owfs__divider { padding-top: 40px; }
 
@@ -4889,13 +4926,25 @@ a.owfs__btn-ghost span { color: white; }
     .cst__view-all { display: none; }
     .cst__divider { padding-top: 36px; }
 
-    /* TRUST */
+    /* TRUST — stack on mobile */
     .trust { padding-top: 64px; }
+
+    .trust__wrap {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
 
     .trust__content { text-align: center; }
     .trust__eyebrow { justify-content: center; }
     .trust__desc { margin-left: auto; margin-right: auto; }
 
+    .trust__visual {
+        max-width: 100%;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .trust__img { aspect-ratio: 16/9; }
     .trust__pillars { grid-template-columns: 1fr; gap: 12px; }
 
     .trust__pillar {
@@ -5034,6 +5083,8 @@ a.owfs__btn-ghost span { color: white; }
     /* CONTACT FORM */
     .cform { padding: 64px 0 48px; }
 
+    .cform__wrap { grid-template-columns: 1fr; gap: 44px; }
+
     .cform__info { text-align: center; }
     .cform__eyebrow { justify-content: center; }
     .cform__desc { text-align: center; }
@@ -5043,24 +5094,28 @@ a.owfs__btn-ghost span { color: white; }
     .cform__row--msg-upload { grid-template-columns: 1fr; }
     .cform__upload-zone { min-height: 90px; height: auto; }
 
-    /* FOOTER – 2 COLUMN MENUS */
+    /* ── FOOTER FIX — clean mobile layout ── */
     .foot__top {
         grid-template-columns: 1fr 1fr;
-        gap: 28px 20px;
+        gap: 24px 16px;
         padding: 44px 0 36px;
+        align-items: start;
     }
 
     .foot__brand {
         grid-column: 1 / -1;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .foot__tagline { margin-left: auto; margin-right: auto; }
+    .foot__tagline { margin-left: auto; margin-right: auto; max-width: 280px; }
     .foot__socials { justify-content: center; }
 
-    .foot__col:nth-child(2),
+    /* Two link columns side by side */
+    .foot__col:nth-child(2) { grid-column: span 1; }
     .foot__col:nth-child(3) { grid-column: span 1; }
-
     .foot__col:nth-child(4) { grid-column: 1 / -1; }
 
     .foot__col-title { font-size: .78rem; margin-bottom: 14px; }
@@ -5118,7 +5173,7 @@ a.owfs__btn-ghost span { color: white; }
         hyphens: auto;
     }
 
-    /* OWFS service cards – stack image on top */
+    /* OWFS service cards – image top, text below */
     .owfs__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
@@ -5152,7 +5207,7 @@ a.owfs__btn-ghost span { color: white; }
     .owfs__card-title { font-size: 1rem; }
     .owfs__card-text  { font-size: .84rem; }
 
-    /* CST slider – ensure enough height */
+    /* CST slider */
     .cst__slide-img-wrap {
         min-height: 420px;
         position: relative;
@@ -5183,6 +5238,7 @@ a.owfs__btn-ghost span { color: white; }
     .proc__steps { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .area__grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
+    /* FOOTER — 3-col on mid tablet */
     .foot__top {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 32px 24px;
