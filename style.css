@@ -5200,7 +5200,8 @@ a.owfs__btn-ghost span { color: white; }
 ============================================================ */
 @media (max-width: 480px) {
 
-    .hero__wrap { gap: 28px; padding-top: 32px; }
+    .hero__wrap {grid-template-columns: 1fr !important;
+ gap: 28px; padding-top: 32px; }
     .hero__h1-word { font-size: clamp(2rem, 11vw, 2.8rem); }
     .hero__right { min-height: 300px; }
     .hero__frame { max-width: 290px; }
