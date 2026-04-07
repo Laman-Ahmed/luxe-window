@@ -5328,6 +5328,11 @@ a.owfs__btn-ghost span { color: white; }
     .foot__credit { font-size: .66rem; }
 }
 
+.bnf__grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
 /* ============================================================
    ≤380px — EXTRA SMALL MOBILE
 ============================================================ */
