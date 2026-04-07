@@ -4757,7 +4757,7 @@ a.owfs__btn-ghost span { color: white; }
     .bnf__title { font-size: clamp(1.9rem, 7vw, 2.8rem); }
 
     .bnf__grid {
-        grid-template-columns: 2fr !;
+        grid-template-columns: 2fr !important;
         gap: 12px;
     }
     .bnf__card--wide { grid-column: span 1; }
