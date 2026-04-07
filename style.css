@@ -5113,16 +5113,38 @@ a.owfs__btn-ghost span { color: white; }
     .foot__tagline { margin-left: auto; margin-right: auto; max-width: 280px; }
     .foot__socials { justify-content: center; }
 
-    /* Two link columns side by side */
-    .foot__col:nth-child(2) { grid-column: span 1; }
-    .foot__col:nth-child(3) { grid-column: span 1; }
-    .foot__col:nth-child(4) { grid-column: 1 / -1; }
-
     .foot__col-title { font-size: .78rem; margin-bottom: 14px; }
     .foot__links { gap: 8px; }
     .foot__links a { font-size: .80rem; }
 
-    .foot__hours li { flex-direction: column; align-items: flex-start; gap: 2px; }
+    /* Two link columns side by side */
+    .foot__col:nth-child(2) { grid-column: span 1; }
+    .foot__col:nth-child(3) { grid-column: span 1; }
+
+    /* Business Hours — full width, hours displayed in a compact row */
+    .foot__col:nth-child(4) {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .foot__hours {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .foot__hours li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        flex: 1 1 calc(33.333% - 24px);
+        min-width: 100px;
+    }
+
     .foot__hours span { font-size: .76rem; }
     .foot__hours strong { font-size: .76rem; }
 
